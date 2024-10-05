@@ -1,6 +1,12 @@
 ## NEWS PORTAL
 
 ___
+```
+git clone https://github.com/DevilSAM/news-portal.git
+cd news-portal
+cp .env.example .env
+```
+___
 
 ### Для запуска нужно предварительно установить и запустить doker
 
