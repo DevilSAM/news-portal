@@ -1,0 +1,9 @@
+.env
+node_modules/
+vendor/
+
+.DS_Store
+.idea/
+
+public/hot
+public/build/assets
