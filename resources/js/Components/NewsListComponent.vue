@@ -19,11 +19,11 @@
             Поиск
           </PrimaryButton>
         </div>
-        <Link v-for="n in news.data" :key="n.id" :href="route('news')+'/'+n.id" as="button" class="w-[100%] text-left" :disabled="linksDisabled">
+        <component :is="linksDisabled ? 'div' : Link" v-for="n in news.data" :key="n.id" :href="route('news')+'/'+n.id">
           <div class="ease-in-out duration-300 mt-[5px] mb-[5px] border-indigo-400 hover:border-x-4 hover:border-x-custom-red hover:mt-1 hover:mb-1 border-2 news-card p-6 text-gray-900 dark:text-gray-100">
             {{ n?.title }}
           </div>
-        </Link>
+        </component>
       </div>
 
       <Paginator class="mt-4" :news-url-route-name="newsUrlRouteName" :current-page="news.current_page" :total-items="news.total" :items-per-page="news.per_page"/>
