@@ -1,11 +1,16 @@
 <template>
-    <Head title="Home" />
+    <Head>
+        <Title>
+            Home
+        </Title>
+    </Head>
 
     <ControlPanelLayout>
         <NewsListComponent
             :news="news"
             :use-search="false"
             news-url-route-name="control-panel.news"
+            :links-disabled="true"
             :use-head-title="true" />
     </ControlPanelLayout>
 </template>

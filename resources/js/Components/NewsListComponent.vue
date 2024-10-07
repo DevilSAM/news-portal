@@ -19,7 +19,7 @@
             Поиск
           </PrimaryButton>
         </div>
-        <Link v-for="n in news.data" :key="n.id" :href="route('news')+'/'+n.id">
+        <Link v-for="n in news.data" :key="n.id" :href="route('news')+'/'+n.id" as="button" class="w-[100%] text-left" :disabled="linksDisabled">
           <div class="ease-in-out duration-300 mt-[5px] mb-[5px] border-indigo-400 hover:border-x-4 hover:border-x-custom-red hover:mt-1 hover:mb-1 border-2 news-card p-6 text-gray-900 dark:text-gray-100">
             {{ n?.title }}
           </div>
@@ -34,14 +34,10 @@
 
 
 <script setup>
-import BasicLayout from '@/Layouts/BasicLayout.vue';
-import { Head, Link, useForm } from '@inertiajs/vue3';
+import { Link, useForm } from '@inertiajs/vue3';
 import TextInput from "@/Components/TextInput.vue";
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import Paginator from "@/Components/Paginator.vue";
-import { onMounted } from 'vue';
-import GuestLayout from "@/Layouts/GuestLayout.vue";
-import ControlPanelLayout from "@/Layouts/ControlPanelLayout.vue";
 
 const props = defineProps({
   news: {
@@ -58,6 +54,10 @@ const props = defineProps({
   newsUrlRouteName: {
     type: String,
     default: 'news',
+  },
+  linksDisabled: {
+    type: Boolean,
+    default: false
   },
 })
 const form = useForm({
