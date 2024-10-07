@@ -17,11 +17,7 @@ const submit = () => {
 
 <template>
   <GuestLayout>
-    <Head title="Telegram Verification">
-      <Title>
-        Telegram Verification
-      </Title>
-    </Head>
+    <Head title="Telegram Verification" />
 
     <form @submit.prevent="submit">
       <div>

@@ -1,9 +1,5 @@
 <template>
-    <Head>
-        <Title>
-            Home
-        </Title>
-    </Head>
+    <Head title="Home" />
 
     <ControlPanelLayout>
         <NewsListComponent
