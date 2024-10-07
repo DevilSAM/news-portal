@@ -1,6 +1,6 @@
 <script setup>
 import { computed } from 'vue';
-import { router, Link } from '@inertiajs/vue3';
+import { Link } from '@inertiajs/vue3';
 
 // Пропсы для передачи данных о пагинации из контроллера
 const props = defineProps({
@@ -39,13 +39,6 @@ const pages = computed(() => {
   return range;
 });
 
-// Функция для перехода на следующую или предыдущую страницу
-const goToPage = (page) => {
-  if (page >= 1 && page <= totalPages.value) {
-    // Вызываем роут или метод, который изменит страницу
-    router.visit(route('news', { page }));
-  }
-};
 </script>
 
 <template>
@@ -68,7 +61,6 @@ const goToPage = (page) => {
         <!-- Кнопка "Previous" -->
         <Link
             :href="generatePageLink(props.currentPage - 1)"
-            @click.prevent="goToPage(props.currentPage - 1)"
             class="dark:text-gray-100 hover:text-gray-700 relative inline-flex items-center rounded-l-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
             :class="{'cursor-not-allowed': props.currentPage === 1}"
         >
@@ -82,7 +74,6 @@ const goToPage = (page) => {
         <template v-for="page in pages" :key="page">
           <Link
               :href="generatePageLink(page)"
-              @click.prevent="goToPage(page)"
               :class="page === props.currentPage
               ? 'z-10 bg-indigo-600 text-white'
               : 'dark:text-gray-100 hover:text-gray-700 text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50'"
@@ -95,7 +86,6 @@ const goToPage = (page) => {
         <!-- Кнопка "Next" -->
         <Link
             :href="generatePageLink(props.currentPage + 1)"
-            @click.prevent="goToPage(props.currentPage + 1)"
             class="relative inline-flex items-center rounded-r-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
             :class="{'cursor-not-allowed': props.currentPage === totalPages}"
         >
